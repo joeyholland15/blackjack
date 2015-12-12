@@ -7,7 +7,7 @@ class window.Hand extends Backbone.Collection
   hit: ->
     @add(@deck.pop())
     @last()
-    # console.log(@model)
+    console.log(@)
     # console.log(App.dealerHand.scores()[0])
     #console.log('ph: ', @isDealer)
     if @bestScore() > 21 and @isDealer
