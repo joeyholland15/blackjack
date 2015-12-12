@@ -7,16 +7,15 @@ class window.Hand extends Backbone.Collection
   hit: ->
     @add(@deck.pop())
     @last()
-    console.log(@scores())
+    # console.log(@model)
+    # console.log(App.dealerHand.scores()[0])
     if @scores()[0] > 21
       alert('Bust. Refresh to play again.')
     #see if score minscore > 21
       #if so, alert dealer wins 
 
   hasAce: -> @reduce (memo, card) ->
-    if card.get('value') is 1
-      memo++ 
-    memo 
+    memo or card.get('value') is 1
   , 0
 
   minScore: -> @reduce (score, card) ->
@@ -29,6 +28,3 @@ class window.Hand extends Backbone.Collection
     # Usually, that array contains one element. That is the only score.
     # when there is an ace, it offers you two scores - the original score, and score + 10.
     [@minScore(), @minScore() + 10 * @hasAce()]
-
-
-
