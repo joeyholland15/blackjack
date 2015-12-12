@@ -20,6 +20,7 @@ class window.Hand extends Backbone.Collection
 
   minScore: -> @reduce (score, card) ->
     # calculate lowest possible score and return
+    # console.log('reveal? ', card.get 'revealed')
     score + if card.get 'revealed' then card.get 'value' else 0
   , 0
 
