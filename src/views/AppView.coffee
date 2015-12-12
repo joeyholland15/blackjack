@@ -10,8 +10,10 @@ class window.AppView extends Backbone.View
     #click event for hit button, this.model.get('playerHand').hit(); 
     'click .hit-button': -> @model.get('game').get('playerHand').hit()
     'click .stand-button': -> 
+      @model.get('game').get('dealerHand').models[0].flip()
       @model.get('game').get('dealerHand').hit() while @model.get('game').get('dealerHand').bestScore() < 17 
-      @model.get('game').stand()
+      if @model.get('game').get('dealerHand').bestScore() <= 21 and @model.get('game').get('playerHand').bestScore() <= 21
+       @model.get('game').stand()
 
   initialize: ->
     @render()

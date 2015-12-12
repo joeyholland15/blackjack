@@ -4,7 +4,7 @@ class window.Game extends Backbone.Model
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
   stand: ->
-    @get('dealerHand').models[0].flip()
+    #@get('dealerHand').models[0].flip()
     # console.log(@get('playerHand').scores()[0])
     # console.log(@get('dealerHand').scores()[0])
     pHand = @get('playerHand')
@@ -24,4 +24,4 @@ class window.Game extends Backbone.Model
     if pHand.bestScore() > dHand.bestScore()
       alert('You win!')
     else 
-      alert('Dealer Wins!')
+      alert('You lose!')

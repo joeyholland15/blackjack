@@ -13,7 +13,7 @@ class window.Hand extends Backbone.Collection
     if @bestScore() > 21 and @isDealer
       alert('You win!')
     else if @bestScore() > 21 and @isDealer == undefined
-      alert('Dealer Wins!')
+      alert('You lose!')
     #see if score minscore > 21
       #if so, alert dealer wins 
 
@@ -29,10 +29,12 @@ class window.Hand extends Backbone.Collection
 
   bestScore: ->
     scoreArr = @scores()
-    if scoreArr[0] > 21 and scoreArr[1] > 21
-      alert('Bust. Refresh to play again.')
-    if scoreArr[0] > scoreArr[1]
-      if scoreArr[0] < 21
+    # if scoreArr[0] > 21 and scoreArr[1] > 21
+    #   alert('Bust. Refresh to play again.')
+    if scoreArr[0] == scoreArr[1]
+      return scoreArr[0]
+    else
+      if scoreArr[1] > 21 
         return scoreArr[0]
       else
         scoreArr[1]
