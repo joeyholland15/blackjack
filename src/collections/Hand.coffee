@@ -9,8 +9,11 @@ class window.Hand extends Backbone.Collection
     @last()
     # console.log(@model)
     # console.log(App.dealerHand.scores()[0])
-    if @scores()[0] > 21
-      alert('Bust. Refresh to play again.')
+    #console.log('ph: ', @isDealer)
+    if @bestScore() > 21 and @isDealer
+      alert('You win!')
+    else if @bestScore() > 21 and @isDealer == undefined
+      alert('Dealer Wins!')
     #see if score minscore > 21
       #if so, alert dealer wins 
 
@@ -23,6 +26,16 @@ class window.Hand extends Backbone.Collection
     # console.log('reveal? ', card.get 'revealed')
     score + if card.get 'revealed' then card.get 'value' else 0
   , 0
+
+  bestScore: ->
+    scoreArr = @scores()
+    if scoreArr[0] > 21 and scoreArr[1] > 21
+      alert('Bust. Refresh to play again.')
+    if scoreArr[0] > scoreArr[1]
+      if scoreArr[0] < 21
+        return scoreArr[0]
+      else
+        scoreArr[1]
 
   scores: ->
     # The scores are an array of potential scores.

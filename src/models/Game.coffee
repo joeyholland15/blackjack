@@ -13,10 +13,15 @@ class window.Game extends Backbone.Model
     # console.log('p: ', pHand.scores()[0])
     # console.log('d: ', dHand.scores()[0])
 
-    if pHand.hasAce()
-      if pHand.scores()[1] < 21 and pHand.scores()[1] > dHand.scores()[0]
-        alert('You win suckaaaah!')
-      else
-        alert('Dealer wins suckaaaah!')
-    else if pHand.scores()[0] < 21 and pHand.scores()[0] > dHand.scores()[0]
-      alert('You win suckaaaah!')
+    # if pHand.hasAce()
+    #   if pHand.scores()[1] < 21 and pHand.scores()[1] > dHand.scores()[0]
+    #     alert('You win suckaaaah!')
+    #   else
+    #     alert('Dealer wins suckaaaah!')
+    # else if pHand.scores()[0] < 21 and pHand.scores()[0] > dHand.scores()[0]
+    #   alert('You win suckaaaah!')
+
+    if pHand.bestScore() > dHand.bestScore()
+      alert('You win!')
+    else 
+      alert('Dealer Wins!')
